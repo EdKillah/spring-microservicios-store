@@ -1,6 +1,7 @@
 package academy.microservicios.store.product.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +34,8 @@ public class Product {
     //Lazy se carga unicamente cuando se requieran
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
+    //JsonIgnoreProperties me permite excluir problemas de fetch lazy, (buscar más qué hace JsonIgnoreProperties)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Category category;
 
 }
