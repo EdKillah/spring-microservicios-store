@@ -3,15 +3,21 @@ package academy.microservicios.store.product.service;
 import academy.microservicios.store.product.entity.Category;
 import academy.microservicios.store.product.entity.Product;
 import academy.microservicios.store.product.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    //En vez de inyectarse con autowired se inyecta por constructor, por eso se usa RequiredArgsConstructor
+    //Se debe declarar final para que el valor sea asignado en el constructor creado de manera interna
+    //Es pasado por parametro el productRepository
+    private final ProductRepository productRepository;
 
     @Override
     public List<Product> listAllProduct() {
@@ -61,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updteStock(Long id, Double quantity) {
+    public Product updateStock(Long id, Double quantity) {
         Product productdb = getProduct(id);
         if(productdb==null)
             return null;

@@ -19,7 +19,7 @@ public interface ProductService {
 
     public List<Product> findByCategory(Category category);
 
-    public Product updteStock(Long id, Double quantity);
+    public Product updateStock(Long id, Double quantity);
 
 
 
