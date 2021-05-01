@@ -1,13 +1,22 @@
 package academy.microservicios.store.product.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name ="tb_products")
+@Table(name ="tbl_products")
+@AllArgsConstructor @NoArgsConstructor @Builder
+@Data
 public class Product {
 
+    //AllArgsConstructor me crea un constructor con todos los argumentos
+    //Builder me permite crear nuevas instancias de la entidad
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
