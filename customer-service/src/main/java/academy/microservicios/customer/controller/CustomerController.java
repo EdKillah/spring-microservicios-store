@@ -72,8 +72,10 @@ public class CustomerController {
     public ResponseEntity<Customer> createCustomer(@Valid @RequestBody Customer customer, BindingResult result){
         log.info("Creating customer: {}",customer);
         if(result.hasErrors()){
+            System.out.println("Error: "+result);
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, this.formatMessage(result));
         }
+
         Customer customerDB = customerService.createCustomer(customer);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(customerDB);

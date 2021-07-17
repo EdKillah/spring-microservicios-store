@@ -3,6 +3,7 @@ package academy.microservicios.customer.service;
 import academy.microservicios.customer.entity.Customer;
 import academy.microservicios.customer.entity.Region;
 import academy.microservicios.customer.repository.CustomerRepository;
+import academy.microservicios.customer.repository.RegionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private RegionRepository regionRepository;
 
     @Override
     public List<Customer> findCustomerAll() {
@@ -30,6 +34,9 @@ public class CustomerServiceImpl implements CustomerService{
     public Customer createCustomer(Customer customer) {
         Customer customerDB = getCustomer(customer.getId());
         if(customerDB == null){
+            if(!regionRepository.findById(customer.getRegion().getId()).isPresent()){
+                Region regionDB = regionRepository.save(customer.getRegion());
+            }
             customer.setState("CREATED");
             return customerRepository.save(customer);
         }else{

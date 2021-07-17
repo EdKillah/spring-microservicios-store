@@ -1,11 +1,13 @@
 server:
-  port: 8080
+  port: 8090
+
 
 spring:
   cloud:
     config:
       server:
         git:
+          default-label: main
           uri: https://github.com/EdKillah/spring-microservicios-store.git
           searchPaths: config-data
           username: ${GIT_USER}
