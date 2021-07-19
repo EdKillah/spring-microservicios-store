@@ -61,7 +61,7 @@ public class ShoppingController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, this.formatMessage(result));
         }
 
-        Invoice invoiceDB = invoiceService.createInvoice (invoice);
+        Invoice invoiceDB = invoiceService.createInvoice(invoice);
         return  ResponseEntity.status(HttpStatus.CREATED).body(invoiceDB);
 
     }
