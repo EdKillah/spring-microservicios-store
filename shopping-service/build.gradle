@@ -23,7 +23,8 @@ ext {
 }
 
 dependencies {
-	//implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	//se usa con hystrix o es ajeno??
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -33,6 +34,14 @@ dependencies {
 	//Feign para usar los demás microservicios en vez de RestTemplate
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	//implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.2.7.RELEASE'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard:2.2.1.RELEASE'
+
+	//Hystrix
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix', version: '2.2.7.RELEASE'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard:2.2.1.RELEASE'
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
