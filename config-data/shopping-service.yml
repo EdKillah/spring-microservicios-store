@@ -48,8 +48,11 @@ hystrix:
   dashboard:
     proxy-stream-allow-list: "*"
 
-managment:
+management:
   endpoints:
     web:
       exposure:
         include: "*"
+
+
+
